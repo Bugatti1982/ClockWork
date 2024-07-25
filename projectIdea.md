@@ -3,7 +3,7 @@ This project will develop a website with a real-time clock that changes its them
 	
 User Story:
 As a user, I want to have a website with a clock that can change themes based on times I input, so that the website's appearance automatically adjusts to different times of the day.
-Acceptance Criteria:
+Acceptance Criteria:v
 Given I am on the website, when I view the homepage, then I should see a clock displaying the current time.
 Given I am on the settings page, when I input a start and end time for a theme, then I should be able to save these times.
 Given I have input and saved theme times, when the current time matches one of these times, then the website's theme should automatically change to the corresponding theme.
@@ -16,3 +16,4 @@ Available themes might include light mode, dark mode, and various color schemes.
 Theme changes should be smooth and not disrupt the user's experience.
 User inputs should be validated to ensure start times are before end times and that there are no overlapping periods for themes.
 Try to implement error handling and display clear, user-friendly messages for invalid input or saving errors.
+
