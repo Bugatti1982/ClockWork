@@ -25,12 +25,8 @@ function createDivots() {
     }
 }
 
-
-
-// Call the initialization function to start the clock
-initClock();
-
 function addZeros(z) {
+    //Adds 0's in front of single digits in minutes and seconds
     if (z < 10) {
         z = "0" + z
     }
@@ -38,6 +34,7 @@ function addZeros(z) {
 }
 
 function limithour(i) {
+    //Limits to 12 hour timeframe
     if (i > 12) {
         i -= 12
     }
@@ -87,6 +84,9 @@ function initClock() {
     createDivots(); // Create and position the divots on the clock face
     realtime(); //Calls the calculations for the times and sets position of hands
 }
+
+// Call the initialization function to start the clock
+initClock();
 
 
 
