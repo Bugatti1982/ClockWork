@@ -56,78 +56,88 @@ footer{
     width: 100%;
 }
 
+/* Container for the entire clock face */
 .Analog-Clock {
-    width: 300px;
-    height: 300px;
-    border: 20px solid black;
-    border-radius: 50%;
-    position: relative;
-    padding: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    background: white;
+    width: 300px; /* Width of the clock */
+    height: 300px; /* Height of the clock */
+    border: 20px solid black; /* Outer border defining the clock's edge */
+    border-radius: 50%; /* Creates a circular shape */
+    position: relative; /* Allows absolute positioning of children */
+    padding: 20px; /* Space inside the border */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Adds shadow effect */
+    background: white; /* Background color */
 }
 
+/* The visible face of the clock, positioned within the outer container */
 .Face {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform: translateY(-3px); /* for the hand positions */
+    position: absolute; /* Positioned within the .Analog-Clock container */
+    top: 20px; /* Positioned from the top by the padding amount */
+    left: 20px; /* Positioned from the left by the padding amount */
+    width: calc(100% - 40px); /* Adjusts width to fit inside padding */
+    height: calc(100% - 40px); /* Adjusts height to fit inside padding */
+    border-radius: 50%; /* Keeps the face circular */
+    background: transparent; /* Ensures visibility of elements on the face */
 }
 
+/* Styles for the clock hands, allowing rotation for time display */
 .hand {
-    width: 50%;
-    background: black;
-    position: absolute;
-    top: 50%;
-    transform-origin: 100%;
-    transform: rotate(90deg);
-    transition: all 0.05s;
-    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+    width: 50%; /* Relative width of the hand */
+    background: black; /* Color of the hand */
+    position: absolute; /* Allows precise positioning and rotation */
+    top: 50%; /* Centers vertically */
+    transform-origin: 100%; /* Rotation point at the end of the hand */
+    transform: rotate(90deg); /* Initial rotation setup */
+    transition: all 0.05s; /* Smooth transition for movements */
+    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1); /* Easing for transition */
 }
 
+/* Specific styling for hour, minute, and second hands */
 .hour-hand {
-    height: 6px;
+    height: 6px; /* Height of the hour hand */
 }
 
 .minute-hand {
-    height: 4px;
+    height: 4px; /* Height of the minute hand */
 }
 
 .second-hand {
-    height: 2px;
-    background: red;
+    height: 2px; /* Height of the second hand */
+    background: red; /* Distinct color for the second hand */
 }
 
+/* Positioning and styling for clock numbers */
 .num {
-    position: absolute;
-    font-size: 24px;
-    transform: translate(-50%, -50%);
+    position: absolute; /* Positioned within .Face */
+    font-size: 24px; /* Font size for numbers */
+    transform: translate(-50%, -50%); /* Centers numbers */
 }
 
-.one  { top: 20%; left: 85%; }
-.two  { top: 35%; left: 92%; }
-.three  { top: 50%; left: 97%; }
-.four  { top: 65%; left: 92%; }
-.five  { top: 80%; left: 85%; }
-.six  { top: 95%; left: 50%; }
-.seven  { top: 80%; left: 15%; }
-.eight  { top: 65%; left: 8%; }
-.nine  { top: 50%; left: 3%; }
-.ten { top: 35%; left: 8%; }
-.eleven { top: 20%; left: 15%; }
-.twelve { top: 5%; left: 50%; }
+/* Positioning for each clock number, arranged around the face */
+.one { top: 10%; left: 75%; }
+.two { top: 27%; left: 94%; }
+.three { top: 52%; left: 100%; }
+.four { top: 75%; left: 92%; }
+.five { top: 91%; left: 74%; }
+.six { top: 100%; left: 48.5%; }
+.seven { top: 91%; left: 25%; }
+.eight { top: 75%; left: 7%; }
+.nine { top: 49%; left: 0%; }
+.ten { top: 27%; left: 10%; }
+.eleven { top: 8%; left: 27%; }
+.twelve { top: 0%; left: 51.5%; }
 
+/* Basic style for second divots on the clock face */
 .second-divots {
-    width: 2px;
-    height: 10px;
-    background: black;
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform-origin: bottom center;
+    width: 2px; /* Width of each divot */
+    height: 10px; /* Default height of each divot */
+    background: black; /* Color of the divots */
+    position: absolute; /* Positioned within .Face */
+    top: 54.5%; /* Vertical alignment */
+    left: 51%; /* Horizontal alignment */
+    transform-origin: -100% -100%; /* Pivot point for rotation */
 }
 
-.second-divot:nth-child(5n) {
-    height: 20px;
-    background: gray;
+/* Specific style for longer, gray divots (every 5th divot) */
+.long-gray-divot {
+    background: red; /* Color for longer divots */
 }

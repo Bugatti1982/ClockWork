@@ -20,8 +20,11 @@
         </nav>
     </header>
     <main>
+        <!-- Container for the analog clock -->
         <div class="Analog-Clock">
+            <!-- Clock face containing numbers and hands -->
             <div class="Face">
+                <!-- Number indicators for the clock face -->
                 <div class="num one">1</div>
                 <div class="num two">2</div>
                 <div class="num three">3</div>
@@ -34,11 +37,15 @@
                 <div class="num ten">10</div>
                 <div class="num eleven">11</div>
                 <div class="num twelve">12</div>
+        
+                <!-- Clock hands for hours, minutes, and seconds -->
                 <div class="hand hour-hand"></div>
                 <div class="hand minute-hand"></div>
                 <div class="hand second-hand"></div>
-                <div class="second-divots"></div>
             </div>
+        
+            <!-- A single divot element (additional divots are added via JavaScript) -->
+            <div class="second-divot"></div>
         </div>
         <h1 id="time"></h1>
     </main>
