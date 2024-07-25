@@ -6,30 +6,6 @@ const secondHand = document.querySelector('.second-hand');
 // Selects the clock face container from the DOM
 const face = document.querySelector('.Face');
 
-// Function to update the hands' rotation based on current time
-function setDate() {
-    // Get the current date and time
-    const now = new Date();
-
-    // Calculate the rotation for the second hand
-    const seconds = now.getSeconds();
-    // Convert seconds to degrees, starting from the top (0 degrees)
-    const secondsDegrees = ((seconds / 60) * 360) + 90;
-    secondHand.style.transform = `rotate(${secondsDegrees}deg)`; // Apply rotation
-
-    // Calculate the rotation for the minute hand
-    const minutes = now.getMinutes();
-    // Convert minutes to degrees, including seconds for accuracy
-    const minutesDegrees = ((minutes / 60) * 360) + ((seconds / 60) * 6) + 90;
-    minuteHand.style.transform = `rotate(${minutesDegrees}deg)`; // Apply rotation
-
-    // Calculate the rotation for the hour hand
-    const hours = now.getHours();
-    // Convert hours to degrees, including minutes for accuracy
-    const hoursDegrees = ((hours / 12) * 360) + ((minutes / 60) * 30) + 90;
-    hourHand.style.transform = `rotate(${hoursDegrees}deg)`; // Apply rotation
-}
-
 // Function to create and position each divot on the clock face
 function createDivots() {
     const radius = 140; // Radius for positioning divots from the center
@@ -49,12 +25,7 @@ function createDivots() {
     }
 }
 
-// Initialize the clock by setting up divots and hands
-function initClock() {
-    createDivots(); // Create and position the divots on the clock face
-    setInterval(setDate, 1); // Update clock hands every millisecond (adjust this if necessary)
-    setDate(); // Set initial time on the clock hands
-}
+
 
 // Call the initialization function to start the clock
 initClock();
@@ -87,6 +58,20 @@ function realtime() {
     m = addZeros(m)
     s = addZeros(s)
 
+    // Convert seconds to degrees, starting from the top (0 degrees)
+    const secondsDegrees = ((s / 60) * 360) + 90;
+    secondHand.style.transform = `rotate(${secondsDegrees}deg)`; // Apply rotation
+
+    // Convert minutes to degrees, including seconds for accuracy
+    const minutesDegrees = ((m / 60) * 360) + ((s / 60) * 6) + 90;
+    minuteHand.style.transform = `rotate(${minutesDegrees}deg)`; // Apply rotation
+
+    // Convert hours to degrees, including minutes for accuracy
+    const hoursDegrees = ((h / 12) * 360) + ((m / 60) * 30) + 90;
+    hourHand.style.transform = `rotate(${hoursDegrees}deg)`; // Apply rotation
+
+
+
     document.getElementById('time').innerHTML = h + ":" + m + ":" + s + " ";
     //Note: The innerHTML property is used to update the items being pushed every time it's updating
     setTimeout(function () {
@@ -97,6 +82,11 @@ function realtime() {
     }, 500)
 }
 
-realtime()
+// Initialize the clock by setting up divots and hands
+function initClock() {
+    createDivots(); // Create and position the divots on the clock face
+    realtime(); //Calls the calculations for the times and sets position of hands
+}
+
 
 
