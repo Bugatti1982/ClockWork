@@ -6,6 +6,26 @@ const secondHand = document.querySelector('.second-hand');
 // Selects the clock face container from the DOM
 const face = document.querySelector('.Face');
 
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector("dialog + button");
+const closeButton = document.querySelector("dialog button");
+
+// "Show the dialog" button opens the dialog modally
+showButton.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+// "Close" button closes the dialog and stores the drop down values in local storage
+closeButton.addEventListener("click", () => {
+    const hours = document.getElementById("hours").value;
+    const minutes = document.getElementById("minutes").value;
+    const ampm = document.getElementById("ampm").value;
+
+    const alarmTime = `${hours}:${minutes} ${ampm}`;
+    localStorage.setItem("alarmTime", alarmTime);
+    dialog.close();
+});
+
 // Function to create and position each divot on the clock face
 function createDivots() {
     const radius = 140; // Radius for positioning divots from the center
@@ -87,6 +107,5 @@ function initClock() {
 
 // Call the initialization function to start the clock
 initClock();
-
 
 
