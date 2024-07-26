@@ -33,14 +33,19 @@ function addZeros(z) {
     return z
 }
 
+
+
 function limithour(i) {
     //Limits to 12 hour timeframe
     if (i > 12) {
         i -= 12
+        AM_PM(true)
+    }
+    else{
+        AM_PM(false)
     }
     return i
 }
-
 
 function realtime() {
     var today = new Date()
@@ -69,7 +74,7 @@ function realtime() {
 
 
 
-    document.getElementById('time').innerHTML = h + ":" + m + ":" + s + " ";
+    document.getElementById('time').innerHTML = h + ":" + m + ":" + s + " " + AM_PM();
     //Note: The innerHTML property is used to update the items being pushed every time it's updating
     setTimeout(function () {
         // Sets a transition between each half second that is passed
