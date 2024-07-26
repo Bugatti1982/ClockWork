@@ -10,19 +10,25 @@ const dialog = document.querySelector("dialog");
 const showButton = document.querySelector("dialog + button");
 const closeButton = document.querySelector("dialog button");
 
-// "Show the dialog" button opens the dialog modally
+// Event listener to open the dialog modally when the "Show the dialog" button is clicked
 showButton.addEventListener("click", () => {
     dialog.showModal();
 });
 
-// "Close" button closes the dialog and stores the drop down values in local storage
+// Event listener to close the dialog and store the dropdown values in local storage when the "Close" button is clicked
 closeButton.addEventListener("click", () => {
+    // Get the selected values from the dropdowns
     const hours = document.getElementById("hours").value;
     const minutes = document.getElementById("minutes").value;
     const ampm = document.getElementById("ampm").value;
 
+    // Combine the values into a single string representing the alarm time
     const alarmTime = `${hours}:${minutes} ${ampm}`;
+
+    // Store the alarm time in local storage
     localStorage.setItem("alarmTime", alarmTime);
+
+    // Close the dialog
     dialog.close();
 });
 
@@ -36,7 +42,7 @@ function createDivots() {
 
         // Add a special class for every 5th divot to make it longer and gray
         if (i % 5 === 0) {
-            divot.classList.add('long-gray-divot');
+            divot.classList.add('long-divot');
         }
 
         // Rotate each divot and position it outward from the center
