@@ -6,6 +6,26 @@ const secondHand = document.querySelector('.second-hand');
 // Selects the clock face container from the DOM
 const face = document.querySelector('.Face');
 
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector("dialog + button");
+const closeButton = document.querySelector("dialog button");
+
+// "Show the dialog" button opens the dialog modally
+showButton.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+// "Close" button closes the dialog and stores the drop down values in local storage
+closeButton.addEventListener("click", () => {
+    const hours = document.getElementById("hours").value;
+    const minutes = document.getElementById("minutes").value;
+    const ampm = document.getElementById("ampm").value;
+
+    const alarmTime = `${hours}:${minutes} ${ampm}`;
+    localStorage.setItem("alarmTime", alarmTime);
+    dialog.close();
+});
+
 // Function to create and position each divot on the clock face
 function createDivots() {
     const radius = 140; // Radius for positioning divots from the center
@@ -34,19 +54,6 @@ function addZeros(z) {
 }
 
 
-
-function limithour(i) {
-    //Limits to 12 hour timeframe
-    if (i > 12) {
-        i -= 12
-        AM_PM(true)
-    }
-    else{
-        AM_PM(false)
-    }
-    return i
-}
-
 function realtime() {
     var today = new Date()
     //Pulls current date and time
@@ -56,7 +63,16 @@ function realtime() {
     var m = today.getMinutes()
     var s = today.getSeconds()
 
-    h = limithour(h)
+    let chng = ''
+    if (h > 12) {
+        h -= 12
+        chng = 'PM'
+    }
+    else {
+        chng = 'AM'
+        return h
+    }
+
     m = addZeros(m)
     s = addZeros(s)
 
@@ -74,7 +90,7 @@ function realtime() {
 
 
 
-    document.getElementById('time').innerHTML = h + ":" + m + ":" + s + " " + AM_PM();
+    document.getElementById('time').innerHTML = h + ":" + m + ":" + s + " " + chng;
     //Note: The innerHTML property is used to update the items being pushed every time it's updating
     setTimeout(function () {
         // Sets a transition between each half second that is passed
@@ -92,6 +108,5 @@ function initClock() {
 
 // Call the initialization function to start the clock
 initClock();
-
 
 
