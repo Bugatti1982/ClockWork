@@ -28,9 +28,13 @@ closeButton.addEventListener("click", () => {
     // Store the alarm time in local storage
     localStorage.setItem("alarmTime", alarmTime);
 
+    alert('You have an alarm set for: ' + alarmTime)
+
     // Close the dialog
     dialog.close();
 });
+
+
 
 // Function to create and position each divot on the clock face
 function createDivots() {
@@ -95,16 +99,22 @@ function realtime() {
     hourHand.style.transform = `rotate(${hoursDegrees}deg)`; // Apply rotation
 
 
-
-    document.getElementById('time').innerHTML = h + ":" + m + ":" + s + " " + chng;
+    document.getElementById('time').innerHTML = h + ":" + m + ":" + s + " " + chng
     //Note: The innerHTML property is used to update the items being pushed every time it's updating
-    setTimeout(function () {
-        // Sets a transition between each half second that is passed
-        //Remember, time is measured in milliseconds
-        realtime()
-        //Takes realtime as the function in the parameter for setTimout
-    }, 500)
+
+
+    let displayAlarm = h + ':' + m + ' ' + chng
+
+    if (displayAlarm == localStorage.getItem('alarmTime') && s == '00') {
+        alert(localStorage.getItem('alarmTime'))
+    }
+
 }
+
+setInterval(realtime, 500)
+// Sets a transition between each half second that is passed
+//Remember, time is measured in milliseconds       
+//Takes realtime as the function in the parameter for setTimou
 
 // Initialize the clock by setting up divots and hands
 function initClock() {
@@ -114,5 +124,14 @@ function initClock() {
 
 // Call the initialization function to start the clock
 initClock();
+
+
+
+
+
+
+
+
+
 
 
