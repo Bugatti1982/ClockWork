@@ -46,7 +46,7 @@ function createDivots() {
 
         // Add a special class for every 5th divot to make it longer and gray
         if (i % 5 === 0) {
-            divot.classList.add('long-divot');
+            divot.classList.add('divot');
         }
 
         // Rotate each divot and position it outward from the center

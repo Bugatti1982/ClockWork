@@ -138,7 +138,7 @@ footer{
 }
 
 /* Specific style for longer, gray divots (every 5th divot) */
-.long-gray-divot {
+.divot {
     background: red; /* Color for longer divots */
 }
 
