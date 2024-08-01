@@ -20,3 +20,16 @@ The action triggered by the alarm should be customizable (e.g., play a sound, di
 User inputs should be validated to ensure alarm times are correctly formatted and do not conflict.
 
 ![alt text](css/wireframe.png)
+
+Tasks:
+1. Get the current time in JavaScript and display the digital time on the website, ensuring it updates every second.
+
+2. Create an analog clock and synchronize it with the digital clock so that it ticks and rotates correctly.
+
+3. Implement a set alarm button and allow the user to save the alarm.
+
+4. Use the saved hour, minute, and am/pm to check and alert the user when the alarm time is reached.
+
+5. Organize and refine the JavaScript code for better readability and maintainability.
+
+6. Update the website's color scheme for an improved visual design.
